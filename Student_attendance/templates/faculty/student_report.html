@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12 text-center">
+        <h2>================================<br>STUDENT REPORT<br>================================</h2>
+    </div>
+</div>
+
+<div class="row mb-4 justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                <p>Student ID : <strong>{{ student.student_id }}</strong></p>
+                <p>Name : <strong>{{ student.name }}</strong></p>
+                <p>Course : <strong>{{ student.course }}</strong></p>
+                <hr>
+                <p>Total Classes : <strong>{{ total }}</strong></p>
+                <p>Present : <strong>{{ present }}</strong></p>
+                <p>Absent : <strong>{{ absent }}</strong></p>
+                <p>Percentage : <strong>{{ percentage }}%</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h4 class="text-center mb-3">Attendance History</h4>
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in history %}
+                <tr>
+                    <td>{{ record.attendance_date }}</td>
+                    <td>
+                        {% if record.status == 'Present' %}
+                            <span class="text-success fw-bold">Present</span>
+                        {% else %}
+                            <span class="text-danger fw-bold">Absent</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

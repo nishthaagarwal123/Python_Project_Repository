@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <h2>Welcome, {{ student.name }}</h2>
+        <p class="text-muted">Student ID: {{ student.student_id }} | Course: {{ student.course }}</p>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3 shadow">
+            <div class="card-header">Total Classes</div>
+            <div class="card-body">
+                <h4 class="card-title text-center">{{ total }}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3 shadow">
+            <div class="card-header">Present</div>
+            <div class="card-body">
+                <h4 class="card-title text-center">{{ present }}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-danger mb-3 shadow">
+            <div class="card-header">Absent</div>
+            <div class="card-body">
+                <h4 class="card-title text-center">{{ absent }}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info mb-3 shadow">
+            <div class="card-header">Attendance</div>
+            <div class="card-body">
+                <h4 class="card-title text-center">{{ percentage }}%</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="list-group">
+            <a href="{{ url_for('student.profile') }}" class="list-group-item list-group-item-action">1. My Profile</a>
+            <a href="{{ url_for('student.attendance') }}" class="list-group-item list-group-item-action">2. My Attendance</a>
+            <a href="{{ url_for('student.attendance') }}" class="list-group-item list-group-item-action">3. Attendance History</a>
+            <a href="{{ url_for('student.change_password') }}" class="list-group-item list-group-item-action">4. Change Password</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
